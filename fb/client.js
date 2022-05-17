@@ -72,7 +72,7 @@ export const fetchLatestNotes = async () => {
     return {
       id,
       ...data,
-      normalizedCreatedAt,
+      createdAt: normalizedCreatedAt,
     };
   });
   return res;
