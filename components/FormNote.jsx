@@ -5,26 +5,14 @@ const FormNote = ({
   handleSubmit,
   handleChange,
   errors,
-  form = null,
+  message,
   isButtonDisabled,
 }) => {
   return (
     <Form onSubmit={handleSubmit} className=" w-[40%] text-white p-4 ">
-      <Form.Input
-        label="Title"
-        placeholder="Title"
-        name="title"
-        onChange={handleChange}
-        error={
-          errors.title
-            ? { content: "Please enter a title", pointing: "below" }
-            : null
-        }
-        value={form && form.title}
-      />
       <Form.TextArea
-        label="Description"
-        placeholder="Description"
+        label="Add a Message"
+        placeholder="Message"
         name="description"
         onChange={handleChange}
         error={
@@ -32,7 +20,7 @@ const FormNote = ({
             ? { content: "Please enter a description", pointing: "below" }
             : null
         }
-        value={form && form.description}
+        value={message}
       />
       <Button disabled={isButtonDisabled} type="submit">
         Save

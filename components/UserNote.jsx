@@ -16,11 +16,11 @@ const UserNote = ({ note }) => {
       />
       <div>
         <div>
-          <strong>{content.title}</strong>
+          <strong>{username}</strong>
           <span> - </span>
-          <date className="text-gray-500">{createdAt}</date>
+          <span className="text-gray-500">{createdAt}</span>
         </div>
-        <p className="text-gray-700">{content.description}</p>
+        <p className="text-gray-700">{content}</p>
       </div>
     </div>
   );
