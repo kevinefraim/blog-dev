@@ -1,17 +1,26 @@
 import Link from "next/link";
 import React from "react";
+import CreateIcon from "./svg/create-icon";
+import HomeIcon from "./svg/home-icon";
+import SearchIcon from "./svg/search-icon";
 
 const Navbar = () => {
   return (
-    <nav className="p-5 mb-3 bg-blue-600 text-white flex justify-start gap-10 text-2xl font-extrabold">
-      <Link href="/">
-        <a className="hover:text-gray-300">Devter</a>
+    <nav className="bg-white bottom-0 sticky w-full border-t flex h-[40px] justify-around py-2 items-center">
+      <Link href="/home">
+        <a>
+          <HomeIcon width={32} height={32} stroke="#000" />
+        </a>
       </Link>
-      <Link href="/notes">
-        <a className="hover:text-gray-300">Notes</a>
+      <Link href="/home">
+        <a>
+          <SearchIcon width={32} height={32} stroke="#000" />
+        </a>
       </Link>
       <Link href="/new">
-        <a className="hover:text-gray-300">Create Note</a>
+        <a>
+          <CreateIcon width={32} height={32} stroke="#000" />
+        </a>
       </Link>
     </nav>
   );

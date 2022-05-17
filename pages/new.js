@@ -61,13 +61,12 @@ const New = () => {
 
   return (
     <AppLayout>
-      <Navbar />
       <div className="flex justify-center my-10">
-        <h1 className="text-blue-600 font-extrabold text-6xl px-8 py-4 bg-white shadow-2xl rounded-full">
+        <h1 className="text-red-600 font-extrabold text-4xl px-8 py-4 bg-white shadow-2xl rounded-full">
           Create a Message
         </h1>
       </div>
-      <div className="flex justify-center ">
+      <div className="flex justify-center flex-1 ">
         {isSubmitting ? (
           <Loader active inline="centered" />
         ) : (
@@ -80,6 +79,7 @@ const New = () => {
           />
         )}
       </div>
+      <Navbar />
     </AppLayout>
   );
 };

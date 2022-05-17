@@ -7,6 +7,7 @@ import CreateIcon from "components/svg/create-icon";
 import Link from "next/link";
 import HomeIcon from "components/svg/home-icon";
 import SearchIcon from "components/svg/search-icon";
+import Navbar from "components/Navbar";
 
 const Home = () => {
   const [timeline, setTimeline] = useState([]);
@@ -25,23 +26,7 @@ const Home = () => {
           <UserNote key={note.id} note={note} />
         ))}
       </section>
-      <nav className="bg-white bottom-0 sticky w-full border-t flex h-[40px] justify-around py-2 items-center">
-        <Link href="/home">
-          <a>
-            <HomeIcon width={32} height={32} stroke="#000" />
-          </a>
-        </Link>
-        <Link href="/home">
-          <a>
-            <SearchIcon width={32} height={32} stroke="#000" />
-          </a>
-        </Link>
-        <Link href="/new">
-          <a>
-            <CreateIcon width={32} height={32} stroke="#000" />
-          </a>
-        </Link>
-      </nav>
+      <Navbar />
     </AppLayout>
   );
 };
