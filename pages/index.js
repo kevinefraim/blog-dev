@@ -22,11 +22,11 @@ const Home = () => {
     <AppLayout>
       <section className="grid place-items-center place-content-center h-full w-full   ">
         <div className="flex flex-col items-center bg-white shadow-2xl p-20  rounded">
-          <Image width={120} height={120} src="/logo-devter.png" alt="devter" />
-          <h1 className="text-blue-800 text-xl font-extrabold mb-0 mt-2">
-            Devter
+          <Image width={125} height={125} src="/logo.png" alt="devter" />
+          <h1 className="text-red-800 text-xl font-extrabold mb-0 mt-2">
+            BlogDev
           </h1>
-          <h2 className="text-blue-400 text-lg">App de notas con NextJs</h2>
+          <h2 className="text-red-400 text-lg">Media Blog with NextJs</h2>
           <div className="mt-2">
             {user === USER_STATES.NOT_LOGGED && (
               <BtnLog handleClick={handleClick} />
