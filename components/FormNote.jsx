@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { DRAG_IMAGE_STATES } from "pages/new";
 import React from "react";
 import { Button, Form } from "semantic-ui-react";
 
@@ -32,7 +33,9 @@ const FormNote = ({
             : null
         }
         value={message}
-        className={`bg-gray-100 rounded p-2 text-black h-full`}
+        className={`bg-gray-100 border-[1px]  border-gray-400 rounded p-2 text-black h-full ${
+          drag === DRAG_IMAGE_STATES.DRAG_OVER && "border-dashed border-[3px]"
+        }`}
       />
       <button
         className="bg-gray-500 mt-4 rounded w-1/4"

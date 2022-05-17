@@ -54,9 +54,19 @@ const New = () => {
     setMessage(e.target.value);
   };
 
-  const handleDragEnter = (e) => setDrag(DRAG_IMAGE_STATES.DRAG_OVER);
-  const handleDragLeave = (e) => setDrag(DRAG_IMAGE_STATES.NONE);
-  const handleDragDrop = (e) => setDrag(DRAG_IMAGE_STATES.NONE);
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    setDrag(DRAG_IMAGE_STATES.DRAG_OVER);
+  };
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setDrag(DRAG_IMAGE_STATES.NONE);
+  };
+  const handleDragDrop = (e) => {
+    e.preventDefault();
+    setDrag(DRAG_IMAGE_STATES.NONE);
+  };
+
   return (
     <AppLayout>
       <div className="flex justify-center my-10">
