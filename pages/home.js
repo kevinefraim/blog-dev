@@ -8,6 +8,7 @@ import Link from "next/link";
 import HomeIcon from "components/svg/home-icon";
 import SearchIcon from "components/svg/search-icon";
 import Navbar from "components/Navbar";
+import Avatar from "components/Avatar";
 
 const Home = () => {
   const [timeline, setTimeline] = useState([]);
@@ -18,8 +19,13 @@ const Home = () => {
   console.log(timeline);
   return (
     <AppLayout>
-      <header className="bg-[#ffffffaa] backdrop-blur-sm z-10 h-[40px] border-b-[1px] mb-4 py-2 px-4  sticky top-0 w-full">
+      <header className="bg-[#ffffffaa] backdrop-blur-sm z-10 h-[70px] border-b-[1px] mb-4 py-2 px-4  sticky top-0 w-full flex justify-between items-center">
         <h1 className="text-2xl font-extrabold ">Inicio</h1>
+        {user !== undefined ? (
+          <Avatar user={user} />
+        ) : (
+          <div className="border-2 rounded-full h-[50px] w-[50px]"></div>
+        )}
       </header>
       <section className="flex-1">
         {timeline?.map((note) => (

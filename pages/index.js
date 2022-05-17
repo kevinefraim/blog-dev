@@ -28,7 +28,7 @@ const Home = () => {
         <div className="mt-2">
           {user === USER_STATES.NOT_LOGGED && (
             <div className="flex flex-col gap-4">
-              {/* <BtnLog handleClick={handleClick} provider="github" /> */}
+              <BtnLog handleClick={handleClick} provider="github" />
               <BtnLog handleClick={handleClick} provider="google" />
             </div>
           )}
