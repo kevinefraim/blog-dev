@@ -6,6 +6,8 @@ import {
   collection,
   getDocs,
   getFirestore,
+  orderBy,
+  query,
   Timestamp,
 } from "firebase/firestore";
 
@@ -62,7 +64,8 @@ export const addNote = ({ avatar, content, userId, username }) => {
 };
 
 export const fetchLatestNotes = async () => {
-  const { docs } = await getDocs(collection(db, "notes"));
+  const qry = query(collection(db, "notes"), orderBy("createdAt", "desc"));
+  const { docs } = await getDocs(qry);
   const res = docs.map((doc) => {
     const data = doc.data();
     const id = doc.id;
