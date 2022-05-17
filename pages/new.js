@@ -15,6 +15,14 @@ const FORM_STATES = {
   SUCCESS: 2,
 };
 
+export const DRAG_IMAGE_STATES = {
+  ERROR: -1,
+  NONE: 0,
+  DRAG_OVER: 1,
+  UPLOADING: 2,
+  COMPLETE: 3,
+};
+
 const New = () => {
   const user = useUser();
   const [message, setMessage] = useState("");
@@ -22,6 +30,9 @@ const New = () => {
   const [errors, setErrors] = useState({});
   const router = useRouter();
   const [status, setStatus] = useState(FORM_STATES.USER_NOT_KNOWN);
+  const [drag, setDrag] = useState(DRAG_IMAGE_STATES.NONE);
+  const [task, setTask] = useState(null);
+  const [img, setImg] = useState(null);
   const isButtonDisabled = status === FORM_STATES.LOADING;
 
   const handleSubmit = (e) => {
@@ -39,26 +50,13 @@ const New = () => {
       .catch((err) => setErrors(err));
   };
 
-  // useEffect(() => {
-  //   if (isSubmitting) {
-  //     if (Object.keys(errors).length === 0) {
-  //       createNote();
-  //     } else {
-  //       setIsSubmitting(false);
-  //     }
-  //   }
-  // }, [errors]);
-
   const handleChange = (e) => {
     setMessage(e.target.value);
   };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   let errs = validate();
-  //   setErrors(errs);
-  //   setIsSubmitting(true);
-  // };
 
+  const handleDragEnter = (e) => setDrag(DRAG_IMAGE_STATES.DRAG_OVER);
+  const handleDragLeave = (e) => setDrag(DRAG_IMAGE_STATES.NONE);
+  const handleDragDrop = (e) => setDrag(DRAG_IMAGE_STATES.NONE);
   return (
     <AppLayout>
       <div className="flex justify-center my-10">
@@ -76,6 +74,10 @@ const New = () => {
             errors={errors}
             isButtonDisabled={isButtonDisabled}
             message={message}
+            handleDragEnter={handleDragEnter}
+            handleDragLeave={handleDragLeave}
+            handleDragDrop={handleDragDrop}
+            drag={drag}
           />
         )}
       </div>

@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getApps } from "firebase/app";
 import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import { getStorage, ref } from "firebase/storage";
 import {
   addDoc,
   collection,
@@ -25,6 +26,7 @@ const apps = getApps();
 !apps.length && app == initializeApp(firebaseConfig);
 
 const auth = getAuth();
+const storage = getStorage();
 
 const db = getFirestore(app);
 export const userFromFirebase = (user) => {
@@ -78,4 +80,10 @@ export const fetchLatestNotes = async () => {
     };
   });
   return res;
+};
+
+export const uploadImage = (file) => {
+  const storageRef = ref(storage, `images/${file.name}`);
+  const task = storageRef.put(file);
+  return task;
 };
