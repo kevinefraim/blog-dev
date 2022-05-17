@@ -8,6 +8,7 @@ import Navbar from "components/Navbar";
 import useUser from "hooks/useUser";
 import AppLayout from "components/AppLayout";
 import { addNote, uploadImage } from "fb/client";
+import Avatar from "components/Avatar";
 
 const FORM_STATES = {
   USER_NOT_KNOWN: 0,
@@ -46,22 +47,29 @@ const New = () => {
 
   return (
     <AppLayout>
-      <div className="flex justify-center my-10">
+      <div className="flex justify-center gap-6 my-10 items-center">
         <h1 className="text-red-600 font-extrabold text-4xl px-8 py-4 bg-white shadow-2xl rounded-full">
           Create a Message
         </h1>
+        {user !== undefined ? (
+          <Avatar user={user} />
+        ) : (
+          <div className="border-2 rounded-full h-[50px] w-[50px]"></div>
+        )}
       </div>
       <div className="flex justify-center flex-1 ">
         {isSubmitting ? (
           <Loader active inline="centered" />
         ) : (
-          <FormNote
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            errors={errors}
-            isButtonDisabled={isButtonDisabled}
-            message={message}
-          />
+          <>
+            <FormNote
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+              errors={errors}
+              isButtonDisabled={isButtonDisabled}
+              message={message}
+            />
+          </>
         )}
       </div>
       <Navbar />
