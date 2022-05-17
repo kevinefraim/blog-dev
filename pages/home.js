@@ -15,19 +15,36 @@ const Home = () => {
   console.log(timeline);
   return (
     <AppLayout>
-      <div className="h-[40px] border-b-[1px] mb-4 py-2 px-4 flex items-center justify-between sticky top-0 w-full">
+      <header className="bg-[#ffffffaa] backdrop-blur-sm z-10 h-[40px] border-b-[1px] mb-4 py-2 px-4 flex items-center justify-between sticky top-0 w-full">
         <h1 className="text-2xl font-extrabold ">Inicio</h1>
         <Link href="/new">
           <a>
             <CreateIcon width={32} height={32} stroke="#000" />
           </a>
         </Link>
-      </div>
+      </header>
       <section className="flex-1">
         {timeline?.map((note) => (
           <UserNote key={note.id} note={note} />
         ))}
       </section>
+      <nav className="bg-white bottom-0 sticky w-full border-t flex h-[40px]">
+        <Link href="/new">
+          <a className="items-center flex flex-auto h-full justify-center">
+            <CreateIcon width={32} height={32} stroke="#000" />
+          </a>
+        </Link>
+        <Link href="/new">
+          <a>
+            <CreateIcon width={32} height={32} stroke="#000" />
+          </a>
+        </Link>
+        <Link href="/new">
+          <a>
+            <CreateIcon width={32} height={32} stroke="#000" />
+          </a>
+        </Link>
+      </nav>
     </AppLayout>
   );
 };
