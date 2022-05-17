@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import AppLayout from "components/AppLayout.jsx";
-import { gitHubLogin } from "fb/client";
+import { handleLogin } from "fb/client";
 import BtnLog from "components/BtnLog.jsx";
-import Avatar from "components/Avatar.jsx";
 import { useRouter } from "next/router";
 import useUser, { USER_STATES } from "hooks/useUser";
 
@@ -15,8 +14,8 @@ const Home = () => {
     user && router.replace("/home");
   }, [user]);
 
-  const handleClick = () => {
-    gitHubLogin().catch((err) => console.log(err));
+  const handleClick = (provider) => {
+    handleLogin(provider).catch((err) => console.log(err));
   };
   return (
     <AppLayout>
@@ -28,9 +27,11 @@ const Home = () => {
         <h2 className="text-red-400 text-lg">Media Blog with NextJs</h2>
         <div className="mt-2">
           {user === USER_STATES.NOT_LOGGED && (
-            <BtnLog handleClick={handleClick} />
+            <div className="flex flex-col gap-4">
+              {/* <BtnLog handleClick={handleClick} provider="github" /> */}
+              <BtnLog handleClick={handleClick} provider="google" />
+            </div>
           )}
-          {/* {user && user.avatar && <Avatar user={user} text={user.username} />} */}
           {user === USER_STATES.NOT_KNOWN && <span>Loading ...</span>}
         </div>
       </div>

@@ -1,6 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getApps } from "firebase/app";
-import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import {
   addDoc,
@@ -41,16 +46,24 @@ export const userFromFirebase = (user) => {
 };
 export const onAuthStateChange = (onChange) => {
   return auth.onAuthStateChanged((user) => {
+    console.log(user);
     const normalizedUser = user ? userFromFirebase(user) : null;
     onChange(normalizedUser);
   });
 };
 
-export const gitHubLogin = async () => {
-  const githubProvider = new GithubAuthProvider();
-  githubProvider.setCustomParameters(firebaseConfig);
+export const handleLogin = async (provider) => {
+  if (provider === "github") {
+    const githubProvider = new GithubAuthProvider();
+    githubProvider.setCustomParameters(firebaseConfig);
 
-  return signInWithPopup(auth, githubProvider);
+    return signInWithPopup(auth, githubProvider);
+  } else if (provider === "google") {
+    const googleProvider = new GoogleAuthProvider();
+    googleProvider.setCustomParameters(firebaseConfig);
+
+    return signInWithPopup(auth, googleProvider);
+  }
 };
 
 export const addNote = ({ avatar, content, userId, username }) => {
