@@ -3,6 +3,8 @@ import UserNote from "components/UserNote";
 import { fetchLatestNotes } from "fb/client";
 import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
+import CreateIcon from "components/svg/create-icon";
+import Link from "next/link";
 
 const Home = () => {
   const [timeline, setTimeline] = useState([]);
@@ -13,12 +15,18 @@ const Home = () => {
   console.log(timeline);
   return (
     <AppLayout>
-      <section className="grid place-items-center place-content-center h-full w-full">
-        <div className="flex flex-col p-4 bg-white shadow-2xl w-[380px] h-[600px] rounded ">
-          {timeline?.map((note) => (
-            <UserNote key={note.id} note={note} />
-          ))}
-        </div>
+      <div className="h-[40px] border-b-[1px] mb-4 py-2 px-4 flex items-center justify-between sticky top-0 w-full">
+        <h1 className="text-2xl font-extrabold ">Inicio</h1>
+        <Link href="/new">
+          <a>
+            <CreateIcon width={32} height={32} stroke="#000" />
+          </a>
+        </Link>
+      </div>
+      <section className="flex-1">
+        {timeline?.map((note) => (
+          <UserNote key={note.id} note={note} />
+        ))}
       </section>
     </AppLayout>
   );

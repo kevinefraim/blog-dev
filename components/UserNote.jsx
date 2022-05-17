@@ -6,7 +6,7 @@ const UserNote = ({ note }) => {
   const { avatar, username, content, likescount, createdAt, userId, id } = note;
   const time = useTimeAgo(createdAt);
   return (
-    <div className="flex gap-4 items-center pb-4 mb-4 border-b-[1px]  ">
+    <div className="flex gap-4 items-center pb-4 pl-4 mb-4 border-b-[1px]  ">
       <Image
         height={49}
         width={49}

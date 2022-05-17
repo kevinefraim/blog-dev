@@ -8,7 +8,11 @@ export default function AppLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>{children}</main>
+      <div className="grid h-[100vh] place-items-center">
+        <main className="bg-white rounded shadow-2xl flex flex-col h-full overflow-y-auto position relative w-full md:h-[90vh] sm:w-[640px]">
+          {children}
+        </main>
+      </div>
     </>
   );
 }
