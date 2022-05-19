@@ -7,7 +7,14 @@ export default async (req, res) => {
     .get()
     .then((doc) => {
       const data = doc.data();
-      res.json(data);
+      const id = doc.id;
+      const { createdAt } = data;
+
+      res.json({
+        id,
+        ...data,
+        createdAt: +createdAt.toDate(),
+      });
     })
     .catch(() => res.status(400).end());
 };

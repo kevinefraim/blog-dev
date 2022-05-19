@@ -1,4 +1,4 @@
-import UserNote from "components/UserNote";
+import UserPost from "components/UserPost";
 import { fetchLatestNotes } from "fb/client";
 import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
@@ -22,8 +22,8 @@ const Home = () => {
         )}
       </header>
       <section className="flex-1">
-        {timeline?.map((note) => (
-          <UserNote key={note.id} note={note} />
+        {timeline?.map((post) => (
+          <UserPost key={post.id} post={post} />
         ))}
       </section>
       <Navbar />

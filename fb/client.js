@@ -46,7 +46,6 @@ export const userFromFirebase = (user) => {
 };
 export const onAuthStateChange = (onChange) => {
   return auth.onAuthStateChanged((user) => {
-    console.log(user);
     const normalizedUser = user ? userFromFirebase(user) : null;
     onChange(normalizedUser);
   });

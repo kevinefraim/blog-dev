@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-const UserNote = ({ note }) => {
-  const { avatar, username, content, likescount, createdAt, userId, id } = note;
+const UserPost = ({ post }) => {
+  const { avatar, username, content, likescount, createdAt, userId, id } = post;
   const time = useTimeAgo(createdAt);
   const router = useRouter();
 
@@ -42,4 +42,4 @@ const UserNote = ({ note }) => {
   );
 };
 
-export default UserNote;
+export default UserPost;
