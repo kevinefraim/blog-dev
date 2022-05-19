@@ -18,7 +18,11 @@ const BtnLog = ({ handleClick, provider }) => {
       onClick={() => handleClick(provider)}
     >
       Entrar con {provider}
-      {provider === "github" ? <GithubIcon stroke="#000" /> : <GoogleIcon />}
+      {provider === "github" ? (
+        <GithubIcon stroke="#000" />
+      ) : (
+        <GoogleIcon fill="#f00" />
+      )}
     </button>
   );
 };
