@@ -18,7 +18,7 @@ const UserNote = ({ note }) => {
         <div>
           <strong>{username}</strong>
           <span> - </span>
-          <span className="text-gray-500">{time}</span>
+          <time className="text-gray-500">{time}</time>
         </div>
         <p className="text-gray-700">{content}</p>
       </div>
