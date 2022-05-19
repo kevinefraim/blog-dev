@@ -40,3 +40,4 @@ package-lock.json
 
 database-data
 next.config.js
+firebase-keys.json

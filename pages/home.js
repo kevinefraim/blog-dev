@@ -9,8 +9,11 @@ const Home = () => {
   const [timeline, setTimeline] = useState([]);
   const user = useUser();
   useEffect(() => {
-    user && listenLatestPosts(setTimeline);
-
+    let unsubcribe;
+    if (user) {
+      unsubcribe = listenLatestPosts(setTimeline);
+    }
+    return () => unsubcribe && unsubcribe();
     // user && fetchLatestPosts().then(setTimeline);
   }, [user]);
   return (
