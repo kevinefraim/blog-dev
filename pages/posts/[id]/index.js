@@ -1,10 +1,15 @@
-import UserPost from "components/UserPost";
 import React from "react";
+import UserPost from "components/UserPost";
+import Navbar from "components/Navbar";
 
 const PostPage = (props) => {
   return (
-    <UserPost post={props} />
-    // <h1>ff</h1>
+    <div className="flex flex-col h-[100vh]">
+      <div className="flex-1">
+        <UserPost post={props} />
+      </div>
+      <Navbar />
+    </div>
   );
 };
 

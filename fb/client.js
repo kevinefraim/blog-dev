@@ -18,6 +18,7 @@ import {
   query,
   Timestamp,
 } from "firebase/firestore";
+import e from "express";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDdYsyM3ETN0C1w7ka3bn2yCUYMKtD4mqQ",
@@ -108,4 +109,7 @@ export const fetchLatestPosts = async () => {
   const { docs } = await getDocs(qry);
   const res = docs.map(mapPostFromFirebase);
   return res;
+};
+export const logout = () => {
+  auth.logout().catch((e) => console.log(e));
 };
