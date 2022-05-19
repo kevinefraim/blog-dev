@@ -3,10 +3,6 @@ import UserNote from "components/UserNote";
 import { fetchLatestNotes } from "fb/client";
 import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
-import CreateIcon from "components/svg/create-icon";
-import Link from "next/link";
-import HomeIcon from "components/svg/home-icon";
-import SearchIcon from "components/svg/search-icon";
 import Navbar from "components/Navbar";
 import Avatar from "components/Avatar";
 
