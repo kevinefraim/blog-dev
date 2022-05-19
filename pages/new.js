@@ -1,13 +1,11 @@
-import axios from "axios";
 import { useRouter } from "next/router";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Loader } from "semantic-ui-react";
 import FormNote from "components/FormNote";
 import Navbar from "components/Navbar";
 import useUser from "hooks/useUser";
-import AppLayout from "components/AppLayout";
-import { addNote, uploadImage } from "fb/client";
+import { addNote } from "fb/client";
 import Avatar from "components/Avatar";
 
 const FORM_STATES = {
@@ -46,7 +44,7 @@ const New = () => {
   };
 
   return (
-    <AppLayout>
+    <>
       <div className="flex justify-center gap-6 my-10 items-center">
         <h1 className="text-red-600 font-extrabold text-4xl px-8 py-4 bg-white shadow-2xl rounded-full">
           Create a Message
@@ -73,7 +71,7 @@ const New = () => {
         )}
       </div>
       <Navbar />
-    </AppLayout>
+    </>
   );
 };
 

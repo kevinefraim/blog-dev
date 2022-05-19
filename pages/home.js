@@ -1,4 +1,3 @@
-import AppLayout from "components/AppLayout";
 import UserNote from "components/UserNote";
 import { fetchLatestNotes } from "fb/client";
 import useUser from "hooks/useUser";
@@ -14,7 +13,7 @@ const Home = () => {
   }, [user]);
   console.log(timeline);
   return (
-    <AppLayout>
+    <>
       <header className="bg-[#ffffffaa] backdrop-blur-sm z-10 h-[70px] border-b-[1px] mb-4 py-2 px-4  sticky top-0 w-full flex justify-between items-center">
         <h1 className="text-2xl font-extrabold ">Inicio</h1>
         {user !== undefined ? (
@@ -29,7 +28,7 @@ const Home = () => {
         ))}
       </section>
       <Navbar />
-    </AppLayout>
+    </>
   );
 };
 
