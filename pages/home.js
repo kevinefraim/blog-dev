@@ -1,5 +1,5 @@
 import UserPost from "components/UserPost";
-import { fetchLatestNotes } from "fb/client";
+import { fetchLatestPosts, listenLatestPosts } from "fb/client";
 import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
 import Navbar from "components/Navbar";
@@ -9,7 +9,9 @@ const Home = () => {
   const [timeline, setTimeline] = useState([]);
   const user = useUser();
   useEffect(() => {
-    user && fetchLatestNotes().then(setTimeline);
+    user && listenLatestPosts(setTimeline);
+
+    // user && fetchLatestPosts().then(setTimeline);
   }, [user]);
   return (
     <>

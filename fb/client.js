@@ -12,6 +12,8 @@ import {
   collection,
   getDocs,
   getFirestore,
+  limit,
+  onSnapshot,
   orderBy,
   query,
   Timestamp,
@@ -77,19 +79,33 @@ export const addNote = ({ avatar, content, userId, username }) => {
   });
 };
 
-export const fetchLatestNotes = async () => {
+const mapPostFromFirebase = (doc) => {
+  const data = doc.data();
+  const id = doc.id;
+  const { createdAt } = data;
+
+  return {
+    id,
+    ...data,
+    createdAt: +createdAt.toDate(),
+  };
+};
+
+export const listenLatestPosts = async (callback) => {
+  const qry = query(
+    collection(db, "notes"),
+    orderBy("createdAt", "desc"),
+    limit(20)
+  );
+  return onSnapshot(qry, ({ docs }) => {
+    const newPosts = docs.map(mapPostFromFirebase);
+    callback(newPosts);
+  });
+};
+
+export const fetchLatestPosts = async () => {
   const qry = query(collection(db, "notes"), orderBy("createdAt", "desc"));
   const { docs } = await getDocs(qry);
-  const res = docs.map((doc) => {
-    const data = doc.data();
-    const id = doc.id;
-    const { createdAt } = data;
-
-    return {
-      id,
-      ...data,
-      createdAt: +createdAt.toDate(),
-    };
-  });
+  const res = docs.map(mapPostFromFirebase);
   return res;
 };
