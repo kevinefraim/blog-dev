@@ -1,12 +1,24 @@
 import useTimeAgo from "hooks/useTimeAgo";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 const UserNote = ({ note }) => {
   const { avatar, username, content, likescount, createdAt, userId, id } = note;
   const time = useTimeAgo(createdAt);
+  const router = useRouter();
+
+  const handleClickArticle = (e) => {
+    e.preventDefault();
+    router.push(`/posts/${id}`);
+  };
+
   return (
-    <div className="flex gap-4 items-center pb-4 pl-4 mb-4 border-b-[1px]  ">
+    <article
+      onClick={handleClickArticle}
+      className="flex gap-4 items-center py-4 pl-4  border-b-[1px] hover:bg-gray-100 cursor-pointer "
+    >
       <Image
         height={49}
         width={49}
@@ -18,11 +30,15 @@ const UserNote = ({ note }) => {
         <div>
           <strong>{username}</strong>
           <span> - </span>
-          <time className="text-gray-500">{time}</time>
+          <Link href={`/posts/${id}`}>
+            <a className="hover:underline">
+              <time className="text-gray-500">{time}</time>
+            </a>
+          </Link>
         </div>
         <p className="text-gray-700">{content}</p>
       </div>
-    </div>
+    </article>
   );
 };
 
